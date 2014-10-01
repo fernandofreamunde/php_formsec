@@ -1,6 +1,6 @@
 <?php
 /**
-* 
+* 	Cenas que a classe de forms faz
 */
 class Form 
 {
