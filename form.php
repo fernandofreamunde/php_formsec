@@ -10,6 +10,7 @@ class Form
 
 	private $form_items = [];  //stores the configuration of the object 
 	private $select_opt = [];  //stores the select fields options. 
+	private $form_buttons = []; //stores the information for the buttons in the form
 
 	/**
 	* 	inicializes the form
@@ -163,12 +164,27 @@ class Form
 		array_push($this->form_items, $input);
 	}
 
+	public function button_draw()
+	{
+		//$form_buttons
+		?>
+		<input type="submit" />
+		<input type="reset" />
+		<?php
+	}
+
 	/**
 	*	Falta acrescentar tag de abertura e fecho do form e submit button
 	*
 	*/
 	public function form_draw()
 	{
+		?>
+
+		<form action=<?php echo '"'.$this->header_action.'"'; ?> method="POST" name=<?php echo '"'.$this->header_name.'"'; ?> >
+
+		<?php
+
 		foreach ($this->form_items as $key) {
 
 			switch ($key['type']) {
@@ -272,9 +288,19 @@ class Form
 				default:
 					# code...
 					break;
-			}
+			}//switch
+
 		#	echo "<pre>" , print_r($key) , "</pre>";
-		}
+		
+		}//foreach
+		
+		echo "<br>";
+		form::button_draw();
+
+		?>
+		</form>
+
+		<?php
 	}
 }
 

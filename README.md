@@ -25,3 +25,7 @@ Para alem das características normais do formulário esta class será ainda res
 
 TO DO
 ---
+-add Buttons logic and configs
+-add action target, and logic protection sanitization in the server side
+-add submit rules
+-add validation js script
