@@ -164,7 +164,7 @@ class Form
 		array_push($this->form_items, $input);
 	}
 
-	public function button_draw()
+	private function button_draw()
 	{
 		//$form_buttons
 		?>
