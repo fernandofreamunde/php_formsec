@@ -115,8 +115,16 @@ class Form
 
 		echo "<pre>" , print_r($this->form_items) , "</pre>";
 		echo "<pre>" , print_r($this->select_opt) , "</pre>";
+		echo "<pre>" , print_r($this->form_buttons) , "</pre>";
 	}
 
+	/**
+	* 	inicializes a password field to be placed in the form
+	*	
+	*	params:
+	*	$name 					string		name atribute for the field.
+	*	$placeholder 			string		placeholder atribute for the field.
+	*/
 	public function input_pw( $name = "pw", $placeholder = "password" )
 	{
 		$input = [];
@@ -128,6 +136,13 @@ class Form
 		array_push($this->form_items, $input);
 	}
 
+	/**
+	* 	inicializes an email field to be placed in the form
+	*	
+	*	params:
+	*	$name 					string		name atribute for the field.
+	*	$placeholder 			string		placeholder atribute for the field.
+	*/
 	public function input_email( $name = "email", $placeholder = "someone@someplace.com" )
 	{
 		$input = [];
@@ -139,6 +154,13 @@ class Form
 		array_push($this->form_items, $input);
 	}
 
+	/**
+	* 	inicializes a text field to be placed in the form
+	*	
+	*	params:
+	*	$name 					string		name atribute for the field.
+	*	$placeholder 			string		placeholder atribute for the field.
+	*/
 	public function input_text( $name = "text", $placeholder = "some text" )
 	{
 		$input = [];
@@ -150,6 +172,12 @@ class Form
 		array_push($this->form_items, $input);
 	}
 
+	/**
+	* 	inicializes a label to be placed in the form
+	*	
+	*	params:
+	*	$output 		string		label output.
+	*/
 	public function label( $output = "label" , $for = 0 )
 	{
 		$input = [];
@@ -163,6 +191,43 @@ class Form
 
 		array_push($this->form_items, $input);
 	}
+
+	/**
+	* 	inicializes the reset button
+	*	
+	*	params:
+	*	$value 		string		button label value.
+	*/
+	public function add_reset_btn($value='-1')
+	{
+		$input = [];
+		$input['type'] = "reset";
+		
+		if ($value == '-1') {
+			$value = -1;
+			$input['value'] = $value;
+		}else{
+			$input['value'] = $value;
+		}
+		
+		array_push($this->form_buttons, $input);
+	}
+
+	/**
+	* 	inicializes the submit button
+	*	
+	*	params:
+	*	$value 		string		button label value.
+	*/
+	public function edit_submit_btn($value)
+	{
+		$input = [];
+
+		$input['type'] = "submit";
+		$input['value'] = $value;
+
+		array_push($this->form_buttons, $input);
+	}	
 
 	private function button_draw()
 	{
@@ -323,9 +388,11 @@ $form->input_pw();
 $form->input_email();
 $form->input_text();
 $form->label();
+$form->add_reset_btn();
+$form->edit_submit_btn("lol");
 
-#$form->print_form_info();
+$form->print_form_info();
 
-$form->form_draw();
+#$form->form_draw();
 
 ?>
